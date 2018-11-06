@@ -32,8 +32,11 @@ public class ReadFile {
 			//Recorre el contenido del fichero que hemos seleccionado anteriormente
 			List <String> contenido = Files.readAllLines(path);
 			
+			for(String cadena: contenido) {
+				System.out.println(contenido);
+			}
 			
-			System.out.println(contenido.split());
+			//System.out.println(contenido.split());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
