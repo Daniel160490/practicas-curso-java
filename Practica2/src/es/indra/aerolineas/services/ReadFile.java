@@ -25,6 +25,7 @@ public class ReadFile {
 		Path path = Paths.get("C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt");
 		try {
 			
+			//Recorre el contenido del fichero que hemos seleccionado anteriormente
 			List <String> contenido = Files.readAllLines(path);
 			System.out.println(contenido);
 			
@@ -34,9 +35,9 @@ public class ReadFile {
 	}
 	
 	
-	
+	/*
 	public static void main(String []args) {
 		ReadFile r = new ReadFile();
 		r.retornarVuelos();
-	}
+	}*/
 }
