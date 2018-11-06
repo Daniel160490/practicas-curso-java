@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es.indra.aerolineas.beans;
+package es.indra.aerolineas.beans.impl;
 
 /**
  * @author P.era-1
@@ -26,5 +26,11 @@ public class Empleado extends Persona {
 	@Override
 	public String getApellido() {
 		return apellido;
+	}
+
+	@Override
+	public String solicitarInformacion() {
+	
+		return "";
 	}
 }
