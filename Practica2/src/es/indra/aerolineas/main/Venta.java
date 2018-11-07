@@ -3,14 +3,17 @@
  */
 package es.indra.aerolineas.main;
 
+import java.io.IOException;
+
 import es.indra.aerolineas.beans.IAerolinea;
 import es.indra.aerolineas.beans.impl.Aerolinea;
 import es.indra.aerolineas.beans.impl.Empleado;
 import es.indra.aerolineas.beans.impl.Pasajero;
 import es.indra.aerolineas.beans.impl.Vuelo;
+import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
 
 /**
- * @author josejarizav
+ * @author Daniel Garcia
  *
  */
 public class Venta {
@@ -29,8 +32,9 @@ public class Venta {
 
 	/**
 	 * @param args
+	 * @throws ErrorLecturaDeVuelosException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ErrorLecturaDeVuelosException {
 
 		String origen = null;
 		String destino = null;
@@ -41,7 +45,13 @@ public class Venta {
 		IAerolinea aa = new Aerolinea(10, "American Airlines",vuelos);
 		
 		aa.consultarVuelos("MAD");
-		aa.consultarVuelos("MAD", "NY");
+		
+		try {
+			aa.consultarVuelos("MAD", "NY");
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		}
 		//aa.anularVuelos();
 		//aa.anularVuelos("UX22");
 		//aa.anularVuelos("SD32","DF33");

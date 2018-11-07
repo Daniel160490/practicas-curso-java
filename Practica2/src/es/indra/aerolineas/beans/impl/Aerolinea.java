@@ -3,13 +3,15 @@
  */
 package es.indra.aerolineas.beans.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import es.indra.aerolineas.beans.IAerolinea;
+import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
 import es.indra.aerolineas.services.ReadFile;
 
 /**
- * @author josejarizav
+ * @author Daniel Garcia
  *
  *
  */
@@ -90,11 +92,10 @@ public class Aerolinea implements IAerolinea {
 	/*
 	 * Mismo metodo que recibe en este caso dos parámetros
 	 */
-	public void consultarVuelos(String origen, String destino) {
+	public void consultarVuelos(String origen, String destino) throws IOException, ErrorLecturaDeVuelosException {
 		
 		ReadFile r = new ReadFile();
-		r.retornarVuelos();
-		List<String> vuelosEncontrados = r.retornarVuelos();
+		List<String> vuelosEncontrados = r.retornarVuelosPropagandoError();
 		
 		/*
 		 * Comprueba que la lista que se recibe no este vacía o nula para imprimir
@@ -114,9 +115,6 @@ public class Aerolinea implements IAerolinea {
 			System.out.println("+--------------------------------------------------------");
 		}
 		
-		
-		
-		//System.out.printf("Método de 2 parámetros: %s y %s %n", origen, destino);
 	}
 	
 	
