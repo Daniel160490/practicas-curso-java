@@ -26,7 +26,7 @@ Contiene diferentes clases divididas en distintos package con diferentes atribut
 * AEROLINEA: implementación de la interfaz IAerolínea. Da cuerpo a los métodos: ..... y a las variables:
    + nombre: nombre de la aerolínea.
    + id: identificador de la aerolínea.
-   + vuelos[]: array de todos los vuelos disponibles.
+   + vuelos[ ]: array de todos los vuelos disponibles.
 * PERSONA:  clase abstracta para representar a todas las personas del sistema. Contiene:
    + nombre: contiene el nombre de la persona.
    + apellido: contiene el apellido de la persona.
