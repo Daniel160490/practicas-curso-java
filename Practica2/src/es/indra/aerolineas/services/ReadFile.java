@@ -24,10 +24,14 @@ public class ReadFile {
 		
 		Path path = Paths.get("C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt");
 		try {
-			
+		
 			//Recorre el contenido del fichero que hemos seleccionado anteriormente
 			List <String> contenido = Files.readAllLines(path);
-			System.out.println(contenido);
+			//Impresion
+			for(String cadena: contenido) {
+				System.out.println(contenido);
+			}
+			//System.out.println(contenido);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
