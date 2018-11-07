@@ -23,7 +23,7 @@ Contiene diferentes clases divididas en distintos package con diferentes atribut
 
 ### CLASES CONTENIDAS EN LA PRÁCTICA 2
 
-##### PACKAGE BEANS
+#### PACKAGE BEANS
 
 * AEROLINEA
 
@@ -35,11 +35,11 @@ Contiene diferentes clases divididas en distintos package con diferentes atribut
 
 * VUELO
 
-##### PACKAGE MAIN
+#### PACKAGE MAIN
 
 * VENTA
 
-##### PACKAGE SERVICE
+#### PACKAGE SERVICE
 
 * READFILE
 
