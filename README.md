@@ -29,10 +29,10 @@ Contiene diferentes clases divididas en distintos package con diferentes atribut
    +vuelos[]: array de todos los vuelos disponibles.
 
 * PERSONA:  clase abstracta para representar a todas las personas del sistema. COntiene:
-   +nombre: contiene el nombre de la persona.
-   +apellido: contiene el apellido de la persona.
-   +dni: contiene el dni de la persona.
-   +id: identificador de la persona.
+   + nombre: contiene el nombre de la persona.
+   + apellido: contiene el apellido de la persona.
+   + dni: contiene el dni de la persona.
+   + id: identificador de la persona.
 
     * PASAJERO
     
