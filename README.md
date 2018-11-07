@@ -1,4 +1,4 @@
-# practicas-curso-java
+# Prácticas-curso-java
 Repositorio para curso inicio de Indra
 
 # URLs Útiles
@@ -15,7 +15,7 @@ URLs de guías útiles de gestión de repositorios de código fuente
 
 ## Descripción
 
-En esta práctica contiene pequeños ejercicios que tratan tanto la herencia entre objetos como lectura de ficheros .txt entre otros.
+Esta práctica contiene pequeños ejercicios que tratan tanto la herencia entre objetos como lectura de ficheros .txt entre otros.
 
 Contiene diferentes clases divididas en distintos package con diferentes atributos cada una, como pueden ser:
 
