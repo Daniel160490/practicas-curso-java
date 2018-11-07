@@ -3,6 +3,8 @@
  */
 package es.indra.aerolineas.beans.impl;
 
+import java.util.List;
+
 import es.indra.aerolineas.beans.IAerolinea;
 import es.indra.aerolineas.services.ReadFile;
 
@@ -92,19 +94,26 @@ public class Aerolinea implements IAerolinea {
 		
 		ReadFile r = new ReadFile();
 		r.retornarVuelos();
+		List<String> vuelosEncontrados = r.retornarVuelos();
 		
 		/*
-		 * Recorre el array de contenido y lo convierte en un String cadena
-		 * Al imprimir el contenido lo separa directamente
+		 * Comprueba que la lista que se recibe no este vacía o nula para imprimir
 		 */
-		
-		System.out.println("+--------------------------------------------------------");
-		
-		for(String cadena: r.retornarVuelos()) {
-			System.out.println("| " .concat(cadena));
+		if (vuelosEncontrados != null && !vuelosEncontrados.isEmpty()) {
+			/*
+			 * Recorre el array de contenido y lo convierte en un String cadena
+			 * Al imprimir el contenido lo separa directamente
+			 */
+			
+			System.out.println("+--------------------------------------------------------");
+			
+			for(String cadena: r.retornarVuelos()) {
+				System.out.println("| " .concat(cadena));
+			}
+			
+			System.out.println("+--------------------------------------------------------");
 		}
 		
-		System.out.println("+--------------------------------------------------------");
 		
 		
 		//System.out.printf("Método de 2 parámetros: %s y %s %n", origen, destino);
