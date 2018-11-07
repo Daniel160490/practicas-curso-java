@@ -36,17 +36,18 @@ public class ReadFile {
 			 * Recorre el array de contenido y lo convierte en un String cadena
 			 * Al imprimir el contenido lo separa directamente
 			 */
+			System.out.println("+--------------------------------------------------------");
+			
 			for(String cadena: contenido) {
-				System.out.println(cadena);
+				System.out.println("| " .concat(cadena));
 			}
 			
-			//System.out.println(contenido.split());
+			System.out.println("+--------------------------------------------------------");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	/*
 	public static void main(String []args) {

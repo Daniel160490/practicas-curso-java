@@ -81,7 +81,7 @@ public class Aerolinea implements IAerolinea {
 	 */
 	public void consultarVuelos(String origen) {
 		
-		System.out.println("Método con SOLO DESTINO: ".concat(origen));
+		//System.out.println("Método con SOLO DESTINO: ".concat(origen));
 	}
 	
 	
@@ -93,7 +93,7 @@ public class Aerolinea implements IAerolinea {
 		ReadFile r = new ReadFile();
 		r.retornarVuelos();
 		
-		System.out.printf("Método de 2 parámetros: %s y %s %n", origen, destino);
+		//System.out.printf("Método de 2 parámetros: %s y %s %n", origen, destino);
 	}
 	
 	
