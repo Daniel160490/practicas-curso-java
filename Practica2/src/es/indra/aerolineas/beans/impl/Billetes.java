@@ -112,7 +112,7 @@ public class Billetes extends Persona {
 	
 	/**
 	 * @return the apellido
-	 * Sobreescribe el m�todo de getApellido de persona
+	 * Sobreescribe el metodo de getApellido de persona
 	 */
 	@Override
 	public String getApellido() {
@@ -129,10 +129,11 @@ public class Billetes extends Persona {
 	public void verBilletesPorFecha() {
 	
 		Map<String, String> billetes = new HashMap<>();
+		
 		billetes.put("07/11/18","74739532C");
 		billetes.put("06/11/18","74739532C");
 		billetes.put("07/11/18","70000032C");
-		billetes.put("06/12/18","70220032C");
+		billetes.put("11/11/11","70220032C");
 		
 		for (Map.Entry<String, String> elemento: billetes.entrySet() ) {
 			System.out.println("|\tBillete con fecha: " + elemento.getKey() + " con pasajero: " + elemento.getValue());

@@ -85,12 +85,12 @@ public class Aerolinea implements IAerolinea {
 	 */
 	public void consultarVuelos(String origen) {
 		
-		//System.out.println("Método con SOLO DESTINO: ".concat(origen));
+		//System.out.println("Metodo con SOLO DESTINO: ".concat(origen));
 	}
 	
 	
 	/*
-	 * Mismo metodo que recibe en este caso dos parámetros
+	 * Mismo metodo que recibe en este caso dos parametros
 	 */
 	public void consultarVuelos(String origen, String destino) throws IOException, ErrorLecturaDeVuelosException {
 		
@@ -98,7 +98,7 @@ public class Aerolinea implements IAerolinea {
 		List<String> vuelosEncontrados = r.retornarVuelosPropagandoError();
 		
 		/*
-		 * Comprueba que la lista que se recibe no este vacía o nula para imprimir
+		 * Comprueba que la lista que se recibe no este vacia o nula para imprimir
 		 */
 		if (vuelosEncontrados != null && !vuelosEncontrados.isEmpty()) {
 			/*
@@ -119,12 +119,12 @@ public class Aerolinea implements IAerolinea {
 	
 	
 	/*
-	 * Método para anular vuelos
-	 * Recibe parametros de forma dinámica, y tienen que ser siempre del mismo tipo
+	 * Metodo para anular vuelos
+	 * Recibe parametros de forma dinamica, y tienen que ser siempre del mismo tipo
 	 * Esto se dice con los tres puntos ...
 	 */
 	public void anularVuelos(String...vuelos) {
-		System.out.println("Número de vuelos a anular: " + vuelos.length);
+		System.out.println("Numero de vuelos a anular: " + vuelos.length);
 	}
 	
 	

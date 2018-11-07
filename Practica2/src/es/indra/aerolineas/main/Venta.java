@@ -38,7 +38,7 @@ public class Venta {
 		
 		for (int i = 0; i < billete.length; i++) {	
 			int a = (int) (Math.random()*10+1);
-			billete[i] = new Billetes("pepe","mas","qwq12312312",1,2,"a33","ee44","2/2/2");
+			billete[i] = new Billetes("","","",i,i * 10,"","","");
 		}
 		
 		return billete;
@@ -78,7 +78,7 @@ public class Venta {
 		Pasajero p = new Pasajero();
 		
 		Vuelo[] vuelosPasajero = {vuelos[0], vuelos[4]};
-		Billetes[] billetesPasajero = {billetes[0], billetes[4]};
+		Billetes[] billetesPasajero = {billetes[0], billetes[6]};
 		
 		p.setId(10);
 		p.setNombre("Jose Julian");
@@ -92,7 +92,9 @@ public class Venta {
 		e.setApellido("Garcia");
 		
 		Billetes b = new Billetes();
-		
+		b.setApellido(p.getApellido());
+		b.setNombre(p.getNombre());
+		b.setDni(p.getDni());
 		
 		System.out.println("*************************************************************************");
 		
@@ -114,10 +116,12 @@ public class Venta {
 		
 		System.out.println("|\tBILLETES AEROLINEAS " .concat(aa.getNombre()));
 		System.out.println("|\tBillete número: " + generateString());
-		System.out.println("|\tPasajero: " + p.getNombre() + " " + p.getApellido());
-		System.out.println("|\tCon DNI: " + p.getDni());
-		System.out.println("|\tFecha Emisión: " + b.getFechaEmision());
+		System.out.println("|\tPasajero: " + b.getNombre() + " " + b.getApellido());
+		System.out.println("|\tCon DNI: " + b.getDni());
+		System.out.println("|\tVuelos para este pasajero: " + p.getVuelos().length);
+		
 		b.verBilletesPorFecha();
+		
 		
 		System.out.println("*************************************************************************");
 
