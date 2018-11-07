@@ -14,7 +14,8 @@ public class Pasajero extends Persona {
 	private int id;
 	
 	private Vuelo[] vuelos;
-
+	
+	private Billetes[] billete;
 	
 	public int getId() {
 		return id;
@@ -30,6 +31,14 @@ public class Pasajero extends Persona {
 
 	public void setVuelos(Vuelo[] vuelos) {
 		this.vuelos = vuelos;
+	}
+	
+	public Billetes[] getBillete() {
+		return billete;
+	}
+	
+	public void setBillete(Billetes[] billete) {
+		this.billete = billete;
 	}
 
 	@Override

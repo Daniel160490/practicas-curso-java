@@ -4,9 +4,11 @@
 package es.indra.aerolineas.main;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import es.indra.aerolineas.beans.IAerolinea;
 import es.indra.aerolineas.beans.impl.Aerolinea;
+import es.indra.aerolineas.beans.impl.Billetes;
 import es.indra.aerolineas.beans.impl.Empleado;
 import es.indra.aerolineas.beans.impl.Pasajero;
 import es.indra.aerolineas.beans.impl.Vuelo;
@@ -29,6 +31,23 @@ public class Venta {
 		
 		return vuelos;
 	}
+	
+	private static Billetes[] creaBilletes() {
+		
+		Billetes[] billete = new Billetes[10];
+		
+		for (int i = 0; i < billete.length; i++) {	
+			int a = (int) (Math.random()*10+1);
+			billete[i] = new Billetes("pepe","mas","qwq12312312",1,2,"a33","ee44","2/2/2");
+		}
+		
+		return billete;
+	}
+	
+	public static String generateString() {
+        String uuid = UUID.randomUUID().toString();
+        return uuid;
+    }
 
 	/**
 	 * @param args
@@ -36,22 +55,22 @@ public class Venta {
 	 */
 	public static void main(String[] args) throws ErrorLecturaDeVuelosException {
 
-		String origen = null;
-		String destino = null;
 		
 		Vuelo[] vuelos = creaVuelos();
+		Billetes[] billetes = creaBilletes();
 		
 		//Uso de la interface que contiene la clase de Aerolinea
 		IAerolinea aa = new Aerolinea(10, "American Airlines",vuelos);
 		
-		aa.consultarVuelos("MAD");
-		
+		//aa.consultarVuelos("MAD");
+		/*
 		try {
 			aa.consultarVuelos("MAD", "NY");
 		} catch (IOException e1) {
 			
 			e1.printStackTrace();
-		}
+		}*/
+		
 		//aa.anularVuelos();
 		//aa.anularVuelos("UX22");
 		//aa.anularVuelos("SD32","DF33");
@@ -59,15 +78,20 @@ public class Venta {
 		Pasajero p = new Pasajero();
 		
 		Vuelo[] vuelosPasajero = {vuelos[0], vuelos[4]};
+		Billetes[] billetesPasajero = {billetes[0], billetes[4]};
 		
 		p.setId(10);
 		p.setNombre("Jose Julian");
 		p.setApellido("Ariza Valderrama");
+		p.setDni("74375632C");
+		p.setBillete(billetesPasajero);
 		p.setVuelos(vuelosPasajero);
 		
 		Empleado e = new Empleado();
 		e.setNombre("Daniel");
-		e.setApellido("Garc�a");
+		e.setApellido("Garcia");
+		
+		Billetes b = new Billetes();
 		
 		
 		System.out.println("*************************************************************************");
@@ -82,6 +106,20 @@ public class Venta {
 		
 		System.out.println("*************************************************************************");
 		
+		
+		System.out.println("\n************************IMPRESIÓN BILLETES*******************************");
+		
+		
+		System.out.println("\n*************************************************************************");
+		
+		System.out.println("|\tBILLETES AEROLINEAS " .concat(aa.getNombre()));
+		System.out.println("|\tBillete número: " + generateString());
+		System.out.println("|\tPasajero: " + p.getNombre() + " " + p.getApellido());
+		System.out.println("|\tCon DNI: " + p.getDni());
+		System.out.println("|\tFecha Emisión: " + b.getFechaEmision());
+		b.verBilletesPorFecha();
+		
+		System.out.println("*************************************************************************");
 
 	}
 
