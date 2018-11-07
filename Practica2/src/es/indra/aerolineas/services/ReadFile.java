@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,37 +17,28 @@ import java.util.List;
 public class ReadFile {
 
 	/*
-	 * M�todo para leer informaci�n de un fichero
+	 * Metodo para leer informacion de un fichero
 	 * Utiliza la sentencia try/catch para contemplar posibles errores.
 	 * 
 	 */
-	public void retornarVuelos() {
+	public List<String> retornarVuelos() {
 		
+		List<String> vuelos = new ArrayList();
 		//Ruta en Windows: C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt
 		//Ruta en Mac: /Users/daniel/Desktop/Curso/practicas-curso-java
 		Path path = Paths.get("C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt");
 		
 		
 		try {
-		
-			//Recorre el contenido del fichero que hemos seleccionado anteriormente
-			List <String> contenido = Files.readAllLines(path);
 			
-			/*
-			 * Recorre el array de contenido y lo convierte en un String cadena
-			 * Al imprimir el contenido lo separa directamente
-			 */
-			System.out.println("+--------------------------------------------------------");
-			
-			for(String cadena: contenido) {
-				System.out.println("| " .concat(cadena));
-			}
-			
-			System.out.println("+--------------------------------------------------------");
+			vuelos = Files.readAllLines(path);
+			return vuelos;
+			//List <String> contenido = Files.readAllLines(path);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return vuelos;
 	}
 	
 	/*
