@@ -22,8 +22,9 @@ public class GenericsDesconocidos {
 		listado.add(45);
 		
 		
-		List<? extends Number> listadoDesconocido = new ArrayList();
-		listadoDesconocido.add(new Integer(34), null);
+		List<Number> listadoDesconocido = new ArrayList();
+		listadoDesconocido.add(new Integer(34));
+		listadoDesconocido.add(23.12);
 	}
 
 }
