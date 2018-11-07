@@ -16,22 +16,34 @@ import java.util.List;
 public class ReadFile {
 
 	/*
-	 * Método para leer información de un fichero
+	 * Mï¿½todo para leer informaciï¿½n de un fichero
 	 * Utiliza la sentencia try/catch para contemplar posibles errores.
 	 * 
 	 */
 	public void retornarVuelos() {
 		
-		Path path = Paths.get("C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt");
+		//Ruta en Windows: C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt
+		//Ruta en Mac: /Users/daniel/Desktop/Curso/practicas-curso-java
+		Path path = Paths.get("/Users/daniel/Desktop/Curso/practicas-curso-java/vuelos.txt");
+		
+		
 		try {
 		
 			//Recorre el contenido del fichero que hemos seleccionado anteriormente
 			List <String> contenido = Files.readAllLines(path);
+
 			//Impresion
 			for(String cadena: contenido) {
 				System.out.println(contenido);
 			}
 			//System.out.println(contenido);
+
+			
+			for(String cadena: contenido) {
+				System.out.println(contenido);
+			}
+			
+			//System.out.println(contenido.split());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
