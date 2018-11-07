@@ -24,23 +24,20 @@ public class ReadFile {
 		
 		//Ruta en Windows: C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt
 		//Ruta en Mac: /Users/daniel/Desktop/Curso/practicas-curso-java
-		Path path = Paths.get("/Users/daniel/Desktop/Curso/practicas-curso-java/vuelos.txt");
+		Path path = Paths.get("C:/Users/P.era-1/repositorios/CursoJava/vuelos.txt");
 		
 		
 		try {
 		
 			//Recorre el contenido del fichero que hemos seleccionado anteriormente
 			List <String> contenido = Files.readAllLines(path);
-
-			//Impresion
-			for(String cadena: contenido) {
-				System.out.println(contenido);
-			}
-			//System.out.println(contenido);
-
 			
+			/*
+			 * Recorre el array de contenido y lo convierte en un String cadena
+			 * Al imprimir el contenido lo separa directamente
+			 */
 			for(String cadena: contenido) {
-				System.out.println(contenido);
+				System.out.println(cadena);
 			}
 			
 			//System.out.println(contenido.split());
