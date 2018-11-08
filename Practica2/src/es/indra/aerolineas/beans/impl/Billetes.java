@@ -10,34 +10,15 @@ import java.util.Map;
  * @author daniel
  *
  */
-public class Billetes extends Persona {
+public class Billetes {
 
-	int id;
-	String numAsiento;
-	String numBillete;
-	String FechaEmision;
+	private int id;
+	private Vuelo vuelo;
+	private Pasajero pasajero;
+	private String asiento;
+	private String fecha;
 	
-	
-	/**
-	 * @param nombre
-	 * @param apellido
-	 * @param dni
-	 * @param id
-	 * @param id2
-	 * @param numAsiento
-	 * @param numBillete
-	 * @param fechaEmision
-	 */
-	public Billetes(String nombre, String apellido, String dni, int id, int id2, String numAsiento, String numBillete,
-			String fechaEmision) {
-		super(nombre, apellido, dni, id);
-		id = id2;
-		this.numAsiento = numAsiento;
-		this.numBillete = numBillete;
-		FechaEmision = fechaEmision;
-	}
-	
-	
+		
 	/**
 	 * 
 	 */
@@ -48,16 +29,22 @@ public class Billetes extends Persona {
 
 
 	/**
-	 * @param nombre
-	 * @param apellido
-	 * @param dni
 	 * @param id
+	 * @param vuelo
+	 * @param pasajero
+	 * @param asiento
+	 * @param fecha
 	 */
-	public Billetes(String nombre, String apellido, String dni, int id) {
-		super(nombre, apellido, dni, id);
+	public Billetes(int id, Vuelo vuelo, Pasajero pasajero, String asiento, String fecha) {
+		super();
+		this.id = id;
+		this.vuelo = vuelo;
+		this.pasajero = pasajero;
+		this.asiento = asiento;
+		this.fecha = fecha;
 	}
 
-
+	
 
 	/**
 	 * @return the id
@@ -66,6 +53,7 @@ public class Billetes extends Persona {
 		return id;
 	}
 
+
 	/**
 	 * @param id the id to set
 	 */
@@ -73,71 +61,76 @@ public class Billetes extends Persona {
 		this.id = id;
 	}
 
+
 	/**
-	 * @return the numAsiento
+	 * @return the vuelo
 	 */
-	public String getNumAsiento() {
-		return numAsiento;
+	public Vuelo getVuelo() {
+		return vuelo;
+	}
+
+
+	/**
+	 * @param vuelo the vuelo to set
+	 */
+	public void setVuelo(Vuelo vuelo) {
+		this.vuelo = vuelo;
+	}
+
+
+	/**
+	 * @return the pasajero
+	 */
+	public Pasajero getPasajero() {
+		return pasajero;
+	}
+
+
+	/**
+	 * @param pasajero the pasajero to set
+	 */
+	public void setPasajero(Pasajero pasajero) {
+		this.pasajero = pasajero;
 	}
 
 	/**
-	 * @param numAsiento the numAsiento to set
+	 * @return the asiento
 	 */
-	public void setNumAsiento(String numAsiento) {
-		this.numAsiento = numAsiento;
+	public String getAsiento() {
+		return asiento;
+	}
+
+
+	/**
+	 * @param asiento the asiento to set
+	 */
+	public void setAsiento(String asiento) {
+		this.asiento = asiento;
 	}
 
 	/**
-	 * @return the fechaEmision
+	 * @return the fecha
 	 */
-	public String getFechaEmision() {
-		return FechaEmision;
+	public String getFecha() {
+		return fecha;
 	}
 
 	/**
-	 * @param fechaEmision the fechaEmision to set
+	 * @param fecha the fecha to set
 	 */
-	public void setFechaEmision(String fechaEmision) {
-		FechaEmision = fechaEmision;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
-	/**
-	 * @return the nombre
-	 * Sobreescribe el metodo de getNombre de persona
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String getNombre() {
-		return nombre;
+	public String toString() {
+		return "Billetes [id=" + id + ", vuelo=" + vuelo + ", pasajero=" + pasajero + ", asiento=" + asiento
+				+ ", fecha=" + fecha + "]";
 	}
-	
-	/**
-	 * @return the apellido
-	 * Sobreescribe el metodo de getApellido de persona
-	 */
-	@Override
-	public String getApellido() {
-		return apellido;
-	}
-	
-	
-	@Override
-	public String solicitarInformacion() {
-		
-		return " ";
-	}
-	
-	public void verBilletesPorFecha() {
-	
-		Map<String, String> billetes = new HashMap<>();
-		
-		billetes.put("07/11/18","74739532C");
-		billetes.put("06/11/18","74739532C");
-		billetes.put("07/11/18","70000032C");
-		billetes.put("11/11/11","70220032C");
-		
-		for (Map.Entry<String, String> elemento: billetes.entrySet() ) {
-			System.out.println("|\tBillete con fecha: " + elemento.getKey() + " con pasajero: " + elemento.getValue());
-		}
-	}
+
 
 }

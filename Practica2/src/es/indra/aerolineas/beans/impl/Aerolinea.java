@@ -4,7 +4,9 @@
 package es.indra.aerolineas.beans.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import es.indra.aerolineas.beans.IAerolinea;
 import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
@@ -19,16 +21,20 @@ public class Aerolinea implements IAerolinea {
 	
 	private int id;
 	private String nombre;
-	private Vuelo[] vuelos = new Vuelo[10];
+	private List<Vuelo> vuelos = new ArrayList<>();
+	private Map<String, List<Billetes>> billetes;
 	
-	public Aerolinea() {}
+	
+	public Aerolinea() {	
+		
+	}
 
 	/**
 	 * @param id
 	 * @param nombre
 	 * @param vuelos
 	 */
-	public Aerolinea(int id, String nombre, Vuelo[] vuelos) {
+	public Aerolinea(int id, String nombre, List<Vuelo> vuelos) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -52,6 +58,7 @@ public class Aerolinea implements IAerolinea {
 	/**
 	 * @return the nombre
 	 */
+	@Override
 	public String getNombre() {
 		return nombre;
 	}
@@ -66,27 +73,64 @@ public class Aerolinea implements IAerolinea {
 	/**
 	 * @return the vuelos
 	 */
-	public Vuelo[] getVuelos() {
+	@Override
+	public List<Vuelo> getVuelos() {
 		return vuelos;
 	}
 
 	/**
 	 * @param vuelos the vuelos to set
 	 */
-	public void setVuelos(Vuelo[] vuelos) {
+	public void setVuelos(List<Vuelo> vuelos) {
 		this.vuelos = vuelos;
 	}
 
-	
-	/*
-	 * 
-	 * 	SOBRECARGA DE METODOS
-	 * 
+	/**
+	 * @return the billetes
 	 */
-	public void consultarVuelos(String origen) {
-		
-		//System.out.println("Metodo con SOLO DESTINO: ".concat(origen));
+	public Map<String, List<Billetes>> getBilletes() {
+		return billetes;
 	}
+
+	/**
+	 * @param billetes the billetes to set
+	 */
+	public void setBilletes(Map<String, List<Billetes>> billetes) {
+		this.billetes = billetes;
+	}
+
+	/* (non-Javadoc)
+	 * @see es.indra.aerolineas.beans.IAerolinea#consultarVuelos(java.lang.String)
+	 */
+	@Override
+	public void consultarVuelos(String origen) {
+		ReadFile read = new ReadFile();
+		List<String> vuelosEncontrados = new ArrayList<String>();
+		try {
+			vuelosEncontrados = read.retornarVuelos();
+			if (vuelosEncontrados != null && !vuelosEncontrados.isEmpty()) {
+				for (String vuelo : vuelosEncontrados) {
+					System.out.println(vuelo);
+				}
+			} else {
+				System.out.println("No se encontraron vuelos");
+			}
+		} catch (ErrorLecturaDeVuelosException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Aerolinea [nombre=" + nombre + "]";
+	}
+
 	
 	
 	/*
@@ -94,25 +138,20 @@ public class Aerolinea implements IAerolinea {
 	 */
 	public void consultarVuelos(String origen, String destino) throws IOException, ErrorLecturaDeVuelosException {
 		
-		ReadFile r = new ReadFile();
-		List<String> vuelosEncontrados = r.retornarVuelosPropagandoError();
-		
-		/*
-		 * Comprueba que la lista que se recibe no este vacia o nula para imprimir
-		 */
-		if (vuelosEncontrados != null && !vuelosEncontrados.isEmpty()) {
-			/*
-			 * Recorre el array de contenido y lo convierte en un String cadena
-			 * Al imprimir el contenido lo separa directamente
-			 */
-			
-			System.out.println("+--------------------------------------------------------");
-			
-			for(String cadena: r.retornarVuelos()) {
-				System.out.println("| " .concat(cadena));
+		ReadFile read = new ReadFile();
+		List<String> vuelosEncontrados = new ArrayList<String>();
+		try {
+			vuelosEncontrados = read.retornarVuelos();
+			if (vuelosEncontrados != null && !vuelosEncontrados.isEmpty()) {
+				for (String vuelo : vuelosEncontrados) {
+					System.out.println(vuelo);
+				}
+			} else {
+				System.out.println("No se encontraron vuelos");
 			}
-			
-			System.out.println("+--------------------------------------------------------");
+		} catch (ErrorLecturaDeVuelosException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
@@ -127,7 +166,18 @@ public class Aerolinea implements IAerolinea {
 		System.out.println("Numero de vuelos a anular: " + vuelos.length);
 	}
 	
-	
+	@Override
+	public void verBilletesPorFecha(String fechaBillete) {
+		
+		List<Billetes> billetePorDia = this.billetes.get(fechaBillete);
+		System.out.println("+--------- IMPRESION DE BILLETES ---------+");
+		for (Billetes b : billetePorDia) {
+			System.out.println("|\t" + b);
+		}
+		System.out.println("+-----------------------------------------+");
+		
+		
+	}
 	
 
 }

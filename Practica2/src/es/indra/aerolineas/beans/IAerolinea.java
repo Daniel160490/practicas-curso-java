@@ -4,7 +4,10 @@
 package es.indra.aerolineas.beans;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
+import es.indra.aerolineas.beans.impl.Billetes;
 import es.indra.aerolineas.beans.impl.Vuelo;
 import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
 
@@ -22,6 +25,10 @@ public interface IAerolinea {
 	
 	public String getNombre();
 	
-	public Vuelo[] getVuelos();
+	List<Vuelo> getVuelos();
+
+	void setBilletes(Map<String, List<Billetes>> billetes);
+
+	void verBilletesPorFecha(String fechaBillete);
 
 }

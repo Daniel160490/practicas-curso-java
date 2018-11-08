@@ -4,6 +4,11 @@
 package es.indra.aerolineas.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 import es.indra.aerolineas.beans.IAerolinea;
@@ -20,28 +25,44 @@ import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
  */
 public class Venta {
 	
-	private static Vuelo[] creaVuelos() {
+	private static List<Vuelo> creaVuelos() {
 		
-		Vuelo[] vuelos = new Vuelo[10];
+		List<Vuelo> vuelos = new ArrayList<>();
 		
-		for (int i = 0; i < vuelos.length; i++) {	
-			int a = (int) (Math.random()*10+1);
-			vuelos[i] = new Vuelo(i,"SD" + a, "MAD","VLC", i * 10, true   );
+		for (int i = 0; i < 100; i++) {	
+			int a = new Random().nextInt(500);
+			vuelos.add(new Vuelo(i,"SD" + a, "MAD","VLC", i * 10, true   ));
 		}
 		
 		return vuelos;
 	}
 	
-	private static Billetes[] creaBilletes() {
+	/*
+	 * Metodo para generar billetes aleatoriamente
+	 * Este metodo los genera con una fecha y asiento ademas de para un pasajero
+	 */
+	private static List<Billetes> generarBilletes(String fecha, Pasajero p){
+		List<Billetes> billetes = new ArrayList<>();
 		
-		Billetes[] billete = new Billetes[10];
-		
-		for (int i = 0; i < billete.length; i++) {	
-			int a = (int) (Math.random()*10+1);
-			billete[i] = new Billetes("","","",i,i * 10,"","","");
+		for (int i = 0; i < 10; i++) {
+			Billetes billete = new Billetes();
+			billete.setId(i);
+			billete.setFecha(fecha);
+			
+			char c1 = (char)new Random().nextInt(50);
+			char c2 = (char)new Random().nextInt(50);
+			
+			/*
+			 * 
+			 */
+			billete.setAsiento("" + c1 + c2 + new Random().nextInt(100) + new Random().nextInt(50));
+			billete.setPasajero(p); 
+			billete.setVuelo(p.getVuelos().get(new Random().nextInt(p.getVuelos().size())));
+			
+			billetes.add(billete);
 		}
 		
-		return billete;
+		return billetes;
 	}
 	
 	public static String generateString() {
@@ -56,8 +77,7 @@ public class Venta {
 	public static void main(String[] args) throws ErrorLecturaDeVuelosException {
 
 		
-		Vuelo[] vuelos = creaVuelos();
-		Billetes[] billetes = creaBilletes();
+		List<Vuelo> vuelos = creaVuelos();
 		
 		//Uso de la interface que contiene la clase de Aerolinea
 		IAerolinea aa = new Aerolinea(10, "American Airlines",vuelos);
@@ -77,53 +97,41 @@ public class Venta {
 		
 		Pasajero p = new Pasajero();
 		
-		Vuelo[] vuelosPasajero = {vuelos[0], vuelos[4]};
-		Billetes[] billetesPasajero = {billetes[0], billetes[6]};
+		List<Vuelo> vuelosPasajero = new ArrayList<>();
+		vuelosPasajero.add(vuelos.get(0));
+		vuelosPasajero.add(vuelos.get(4));
 		
 		p.setId(10);
 		p.setNombre("Jose Julian");
 		p.setApellido("Ariza Valderrama");
 		p.setDni("74375632C");
-		p.setBillete(billetesPasajero);
 		p.setVuelos(vuelosPasajero);
 		
 		Empleado e = new Empleado();
 		e.setNombre("Daniel");
 		e.setApellido("Garcia");
 		
-		Billetes b = new Billetes();
-		b.setApellido(p.getApellido());
-		b.setNombre(p.getNombre());
-		b.setDni(p.getDni());
+		Map<String, List<Billetes>> billetesEmitidos = new HashMap<>();
+		
+		billetesEmitidos.put("08/11/2018", generarBilletes("08/11/2018", p));
+		billetesEmitidos.put("01/01/2019", generarBilletes("01/01/2019", p));
+		
+		aa.setBilletes(billetesEmitidos);
+		
+		aa.verBilletesPorFecha("08/11/2018");
 		
 		System.out.println("*************************************************************************");
 		
 		System.out.println("|\tBienvenidos a aerolineas ".concat(aa.getNombre()));
 		
-		System.out.printf("|\tTenemos %s vuelos disponibles%n",aa.getVuelos().length);
+		System.out.printf("|\tTenemos %s vuelos disponibles%n",aa.getVuelos().size());
 		
-		System.out.printf("|\t%s, gracias por confiar en nosotros. Tienes %s vuelos comprados %n", p.getNombre(), p.getVuelos().length );
+		System.out.printf("|\t%s, gracias por confiar en nosotros. Tienes %s vuelos comprados %n", p.getNombre(), p.getVuelos().size());
 		
 		System.out.println("|\tLe atiende: " .concat(e.getNombre() .concat(" ") .concat(e.getApellido())));
 		
 		System.out.println("*************************************************************************");
 		
-		
-		System.out.println("\n************************IMPRESIÓN BILLETES*******************************");
-		
-		
-		System.out.println("\n*************************************************************************");
-		
-		System.out.println("|\tBILLETES AEROLINEAS " .concat(aa.getNombre()));
-		System.out.println("|\tBillete número: " + generateString());
-		System.out.println("|\tPasajero: " + b.getNombre() + " " + b.getApellido());
-		System.out.println("|\tCon DNI: " + b.getDni());
-		System.out.println("|\tVuelos para este pasajero: " + p.getVuelos().length);
-		
-		b.verBilletesPorFecha();
-		
-		
-		System.out.println("*************************************************************************");
 
 	}
 
