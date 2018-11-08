@@ -11,6 +11,8 @@ URLs de guías útiles de gestión de repositorios de código fuente
 
 * https://medium.com/@sthefany/primeros-pasos-con-github-7d5e0769158c
 
+* http://campus.ktaris.com/modificar-usuario-local-de-git/
+
 # ESTRUCTURA 
 
 ## Descripción
