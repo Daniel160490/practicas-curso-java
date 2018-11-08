@@ -1,0 +1,3 @@
+-> Pasajero [nombre=null, apellido=null, dni=null];
+-> Pasajero [nombre=null, apellido=null, dni=null];
+-> Pasajero [nombre=null, apellido=null, dni=null];

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.indra.aerolineas.beans.impl.Pasajero;
+import es.indra.aerolineas.beans.impl.Persona;
 
 /**
  * @author Daniel Garcia
@@ -24,7 +25,6 @@ public class WriteFile {
 	 */
 	public static void escribirFichero() {
 		
-		Pasajero pasajero;
 		FileWriter fichero = null;
         PrintWriter pw = null;
 
@@ -36,12 +36,28 @@ public class WriteFile {
         	fichero = new FileWriter("pasajeros.txt");
            	pw = new PrintWriter(fichero);
  
-           	List<Pasajero> p = new ArrayList();
+           	List<Pasajero> p = new ArrayList<>();
+           	p.add(new Pasajero());
+           	p.add(new Pasajero());
+           	p.add(new Pasajero());
+           	//p.add(new Persona("Daniel","Garcia","75747362C",1));
            	
+           	List<Persona> personas = generarPersonas();
            	System.out.println("Guardando pasajeros.txt");
-           	for (int i = 0; i < p.size(); i++) {
-        	   pw.println("Pasajero: " + p.get(i).getNombre() + ";");
+           	
+           	for (Persona persona : personas) {
+	           	StringBuilder sb = new StringBuilder();
+	           	sb.append(persona.getApellido());
+	           	sb.append(";");
+	           	sb.append(persona.getNombre());
+	           	sb.append(";");
+	           	
            	}
+           	
+           	
+           	/*for (int i = 0; i < p.size(); i++) {
+        	   pw.println("-> " + p.get(i) + ";");
+           	}*/
  
         } catch (Exception e) {
         	e.printStackTrace();
