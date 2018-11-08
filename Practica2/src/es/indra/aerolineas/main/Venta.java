@@ -18,6 +18,7 @@ import es.indra.aerolineas.beans.impl.Empleado;
 import es.indra.aerolineas.beans.impl.Pasajero;
 import es.indra.aerolineas.beans.impl.Vuelo;
 import es.indra.aerolineas.exceptions.ErrorLecturaDeVuelosException;
+import es.indra.aerolineas.services.WriteFile;
 
 /**
  * @author Daniel Garcia
@@ -132,6 +133,9 @@ public class Venta {
 		
 		System.out.println("*************************************************************************");
 		
+		WriteFile wf = new WriteFile();
+		
+		wf.escribirFichero();
 
 	}
 
